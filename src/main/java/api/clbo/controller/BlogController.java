@@ -13,17 +13,19 @@ public class BlogController {
 
     @Autowired
     PostRepository postRepository;
-
+    @CrossOrigin()
     @GetMapping("/posts")
     public @ResponseBody Iterable<Post> getAll(){
         return postRepository.findAll();
     }
 
+    @CrossOrigin()
     @GetMapping("/posts/{id}")
     public @ResponseBody Optional<Post> get(@PathVariable("id") String id){
         return postRepository.findById(Long.valueOf(id));
     }
 
+    @CrossOrigin()
     @PostMapping("/posts")
     public @ResponseBody String add(@ModelAttribute Post p){
 
